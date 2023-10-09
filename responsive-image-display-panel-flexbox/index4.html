@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>image panel</title>
+
+  <!-- TODO this isn't completed, use grid -->
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 20px;
+    }
+    body {
+      background-color: #ffffff;
+    }
+    h1 {
+      text-align: center;
+      letter-spacing: 1px;
+      margin-top: 20px;
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 12px;
+      margin-bottom: 20px;
+    }
+    .images {
+      margin-top: 8px;
+      padding: 0px 10px;
+      flex-grow: 25%;
+      max-width: 25%;
+    }
+
+    @media (max-width: 800px) {
+      .images {
+        flex-grow: 50%;
+        max-width: 50%;
+      }
+    }
+    @media (max-width: 600px) {
+      .images {
+        flex-grow: 100%;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Image Gallery using Flexbox Responsive</h1>
+  <div class="row">
+    <img src="./assets/1.jpg" class="images" style="width: 100%;">
+    <img src="./assets/2.jpg" class="images" style="width: 100%;">
+    <img src="./assets/3.jpg" class="images" style="width: 100%;">
+    <img src="./assets/4.jpg" class="images" style="width: 100%;">
+    <img src="./assets/5.jpg" class="images" style="width: 100%;">
+    <img src="./assets/6.jpg" class="images" style="width: 100%;">
+    <img src="./assets/7.jpg" class="images" style="width: 100%;">
+    <img src="./assets/8.jpg" class="images" style="width: 100%;">
+    <img src="./assets/9.jpg" class="images" style="width: 100%;">
+    <img src="./assets/10.jpg" class="images" style="width: 100%;">
+    <img src="./assets/11.jpg" class="images" style="width: 100%;">
+    <img src="./assets/12.jpg" class="images" style="width: 100%;">
+  </div>
+</body>
+</html>

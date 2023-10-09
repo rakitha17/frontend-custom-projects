@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-do Page</title>
+
+  <!-- font-awesome link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- SECTION - styling -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,300;10..48,400;10..48,500&display=swap');
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 20px;
+    }
+    body {
+      height: 100vh;
+      background-image: url('woman-1245817_1920.jpg');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .container {
+      width: 500px;
+    }
+    .input-field {
+      width: 100%;
+      background-color: rgba(0, 0, 0, .3);
+      border: 2px solid rgba(0, 0, 0, .8);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0px 0px 4px 2px #000;
+
+      display: flex;
+      justify-content: space-between;
+    }
+    .input-field #task-input {
+      width: 90%;
+      padding: 5px;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 18px !important;
+      border: 2px solid #cccccc !important;
+      border-radius: 20px;
+      margin-right: 10px;
+
+      transition: box-shadow .2s;
+    }
+      .input-field #task-input:focus {
+        outline: none;
+        box-shadow: 0 0 4px #000, 0 0 8px #000;
+      }
+
+    .input-field #task-add-btn {
+      padding: 5px 10px;
+      align-self: center;
+      border: none;
+      font-size: 18px !important;
+      color: #fff;
+      background-color: rgba(255, 204, 0, .75);
+
+      transition: color .5s, background-color .5s, transform .2s, box-shadow .2s;
+    }
+      .input-field #task-add-btn:hover {
+        color: rgb(51, 204, 51);
+        background-color: rgba(255, 204, 0);
+      }
+      .input-field #task-add-btn:hover:active {
+        transform: scale(0.8);
+        box-shadow: 0 0 4px #000, 0 0 8px #000;
+      }
+
+      /* js styling section */
+      .result-field {
+        width: 100%;
+        margin-top: 10px;
+      }
+      .result-field .task {
+        width: 100%;
+        /* background-color: rgba(0, 0, 0, .3); */
+        text-decoration: none;
+        padding: 10px;
+        border: 1px solid #000;
+        border-radius: 5px;
+
+        display: flex;
+        justify-content: space-between;
+      }
+        .result-field .task:nth-child(even) {
+          margin-bottom: 3px;
+          transform: perspective(100px) rotateX(3deg);
+          background: linear-gradient(to bottom,  rgba(0, 0, 0, .3) 0%,rgba(0, 0, 0, .5) 100%);
+
+        }
+        .result-field .task:nth-child(odd) {
+          margin-bottom: 2px;
+          transform: perspective(100px) rotateX(-3deg);
+          background: linear-gradient(to top,  rgba(0, 0, 0, .3) 0%,rgba(0, 0, 0, .5) 100%);
+        }
+
+      .result-field .task li {
+        list-style-type: none;
+        background-color: #fff;
+        padding: 5px;
+        font-size: 15px !important;
+        flex: 4;
+        overflow: auto;
+      }
+          .addingEffect {
+            text-decoration: line-through;
+          }
+
+      .result-field .task button {
+        flex: .5;
+        border: none;
+        border-radius: 5px;
+        background: #fff;
+        cursor: pointer;
+        font-size: 15px;
+
+        transition: .05s ease-in;
+      }
+        .result-field .task button:active {
+          transform: scale(.8);
+        }
+
+      .result-field .task .checkBtn {
+        margin: 0 5px;
+        color: #fff;  
+        background-color: #ff9900;
+      }
+          .background {
+            background-color: #33cc33 !important;
+          }
+
+      .result-field .task .deleteBtn{
+        background-color: #ff1a1a;
+        color: #fff;
+      }
+  </style>
+
+</head>
+<body>
+  
+  <!-- SECTION - page content -->
+  <div class="container">
+    <div class="input-field">
+      <input type="text" id="task-input" placeholder="Insert your task">
+      <button id="task-add-btn">
+        <i class="fa-solid fa-plus"></i>
+      </button>
+    </div>
+    <div class="result-field">
+
+    </div>
+  </div>
+
+  <!-- SECTION - scripting -->
+  <script>
+
+    // variables for dom callings
+    const taskInput = document.querySelector("#task-input");
+    const addBtn = document.querySelector("#task-add-btn");
+    const resultField = document.querySelector(".result-field");
+
+    // clear variables
+    // let clicked = true;
+
+    // event listener
+    addBtn.addEventListener('click', function() {
+      
+      let task = document.createElement("div");
+      task.classList.add("task");
+
+      let li = document.createElement("li");
+      li.innerText = `${taskInput.value}`;
+      task.appendChild(li);
+
+      let checkBtn = document.createElement("button");
+      checkBtn.classList.add("checkBtn");
+      checkBtn.innerHTML = '<i class="fa-solid fa-check"></i>';
+      task.appendChild(checkBtn);
+
+      let deleteBtn = document.createElement("button");
+      deleteBtn.classList.add("deleteBtn");
+      deleteBtn.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
+      task.appendChild(deleteBtn);
+
+      if(taskInput.value == "") {
+
+        alert("Please enter a task first.");
+
+      }else {
+
+        resultField.appendChild(task);
+
+      }
+
+      taskInput.value = "";
+
+      // delete btn event
+      deleteBtn.addEventListener('click', function() {
+
+        this.parentElement.remove();
+
+      })
+
+      // check btn event
+      function checkFunction() {
+
+        this.previousElementSibling.classList.toggle("addingEffect");
+        this.classList.toggle("background");
+
+      }
+
+      checkBtn.addEventListener('click', checkFunction);
+    })
+
+  </script>
+</body>
+</html>

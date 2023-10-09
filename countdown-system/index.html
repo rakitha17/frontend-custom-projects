@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <link rel="stylesheet" href="style.css">
+  <title>Count Down Timer</title>
+</head>
+<body>
+  <div class="main">
+    <h1>Countdown Timer</h1>
+    <div class="container">
+      <!-- LABELS -->
+      <p class="label" id="hour-label">Hours</p>    <p class="label" id="minute-label">Minutes</p>    <p class="label" id="second-label">Seconds</p>
+      <!-- TIMER -->
+      <input class="timer" type="number" id="hour-btn" min="0" max="99" value="0"> <p class="semicolon" id="hour-semi">:</p> <input type="number" class="timer" id="minute-btn" min="0" max="60" value="0"> <p class="semicolon" id="minute-semi">:</p> <input type="number" class="timer" id="second-btn" min="0" max="60" value="0">
+      <!-- BUTTONS -->
+      <input type="button" class="button" id="start-btn" value="START">
+      <input type="button" class="button" id="reset-btn" value="RESET">
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

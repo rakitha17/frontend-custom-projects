@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accordion</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-family: Calibri, 'Trebuchet MS', sans-serif;
+      font-size: 15px;
+    }
+    body {
+      height: 100vh;
+      background-image: url('black-1072366_1920.jpg');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .accordion {
+      width: 60%;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 20px;
+    }
+    .accordion .title {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 30px;
+      letter-spacing: .5px;
+    }
+    .accordion .accordion-container .question {
+      position: relative;
+      display: block;
+      font-size: 20px !important;
+      padding: 10px 0;
+      border-bottom: 1px solid #aaaaaa;
+      cursor: pointer;
+      user-select: none;
+
+      transition: .5s;
+    }
+    .accordion .accordion-container .question::after {
+      content: "+";
+      position: absolute;
+      right: 0;
+    }
+
+    .accordion .accordion-container .answer {
+      display: block;
+      padding-top: 15px;
+      font-size: 20px !important;
+      width: 100%;
+      line-height: 1.5;
+
+      height: 0px;
+      overflow: hidden;
+      transition: .5s;
+    }
+
+    /* NOTE - js styling */
+    .accordion .accordion-container.active .answer {
+      height: 200px;
+    }
+    .accordion .accordion-container.active .question {
+      font-size: 15px !important;
+    }
+  </style>
+
+</head>
+<body>
+  
+  <div class="accordion">
+    <h1 class="title">Frequently Asked Questions</h1>
+    <div class="accordion-container">
+      <span class="question">What is the return Policy?</span>
+      <span class="answer">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis veniam doloremque alias tempora, aperiam delectus. Ducimus vitae excepturi nihil voluptatibus rem quisquam perspiciatis blanditiis facere eius quae, qui eligendi ratione.</span>
+    </div>
+    <div class="accordion-container">
+      <span class="question">What is the return Policy?</span>
+      <span class="answer">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis veniam doloremque alias tempora, aperiam delectus. Ducimus vitae excepturi nihil voluptatibus rem quisquam perspiciatis blanditiis facere eius quae, qui eligendi ratione.</span>
+    </div>
+    <div class="accordion-container">
+      <span class="question">What is the return Policy?</span>
+      <span class="answer">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis veniam doloremque alias tempora, aperiam delectus. Ducimus vitae excepturi nihil voluptatibus rem quisquam perspiciatis blanditiis facere eius quae, qui eligendi ratione.</span>
+    </div>
+  </div>
+
+    <script>
+      const accordion = document.querySelectorAll(".accordion-container");
+
+      for(let i = 0; i < accordion.length; i++) {
+
+        accordion[i].addEventListener('click', function() {
+          console.log(this);
+          this.classList.toggle("active");
+
+        })
+      }
+    </script>
+
+</body>
+</html>

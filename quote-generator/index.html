@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quote Generator</title>
+
+  <!-- SECTION - style -->
+  <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital@0;1&display=swap');
+
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      font-family: 'Merriweather', serif;
+      font-size: 20px;
+    }
+    body {
+      height: 100vh;
+      position: relative;
+      background-image: url(2587135.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+    }
+    #qoute-container {
+      width: 500px;
+      height: 300px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+    #qoute-container #heading {
+      font-style: normal !important;
+      border: 1px solid #ffffff;
+      border-radius: 10px;
+      padding: 5px 20px;
+      color: #ffffff !important;
+      letter-spacing: 1px !important;
+      background-color: black;
+      margin-bottom: 20px;
+    }
+    #qoute-container #heading h1 {
+      display: inline;
+    }
+    #qoute-container #qoute-section {
+      width: 100%;
+      height: 100%;
+      border: 1px solid #000000 !important;
+      border-radius: 10px;
+      background-color: #ffffff !important;
+    }
+    #qoute-container #qoute-section #qoute-writer {
+      margin: 50px 0;
+    }
+    #qoute-writer #text {
+      display: block;
+      margin-bottom: 20px;
+      font-style: italic !important;
+      font-weight: bolder !important;
+    }
+    #qoute-writer #author {
+      font-size: 30px;
+      font-weight: normal !important;
+      color: #ff0000;
+    }
+    #qoute-writer #author::before, #author::after {
+      content: "  -  ";
+      display: inline;
+      clear: both;
+    }
+    #qoute-writer #btn {
+      margin: 50px 0;
+    }
+    #btn button {
+      border-radius: 10px;
+      border: none;
+      padding: 10px 30px;
+      font-size: 15px; letter-spacing: 1px;
+    }
+    #btn button:hover {
+      cursor: pointer;
+    }
+  </style>
+
+</head>
+<body>
+
+  <!-- SECTION - content -->
+  <div id="qoute-container">
+    <div id="heading">
+      <h1>Quote Generator</h1>
+    </div>
+    <div id="qoute-section">
+      <div id="qoute-writer">
+        <span id="text">
+          "The purpose of our lives is to be happy."
+        </span>
+        <span id="author">Dalai Lama</span>
+        <div id="btn">
+          <button>Next Quote</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION - scripts -->
+  <script>
+
+    const quote = [
+      {
+        text: '"The purpose of our lives is to be happy."',
+        author: "Dalai Lama"
+      },
+      {
+        text: '"Life is what happens when you\'re busy making other plans."',
+        author:  "John Lennon"
+      },
+      {
+        text: '"Get busy living or get busy dying."',
+        author: " Stephen King"
+      },
+      {
+        text: '"You only live once, but if you do it right, once is enough."',
+        author: " Mae West"
+      },
+      {
+        text: '"Many of life’s failures are people who did not realize how close they were to success when they gave up."',
+        author: " Thomas A. Edison"
+      }  
+    ]
+
+    const text = document.querySelector('#text');
+    const author = document.querySelector('#author');
+    const btn = document.querySelector("button");
+
+    btn.addEventListener('click', function() {
+      let random = Math.floor(Math.random() * quote.length);
+
+      text.innerText = quote[random].text;
+      author.innerText = quote[random].author;
+    })
+  </script>
+</body>
+</html>
