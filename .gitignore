@@ -4,5 +4,8 @@
 # ignore ALL .vscode files
 *.vscode
 
+#ignore ALL .stackdump files
+*.stackdump
+
 # ignore ALL files in ANY directory named temp
 temp/
