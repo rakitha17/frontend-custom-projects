@@ -18,6 +18,7 @@ These custom projects are designed by me.
 1. Countdown System
 1. Quote Generator
 1. Responsive Image Display Panel Flexbox
+1. Responsive Layout
 1. Simple to do Page
 1. Stop Watch
 1. Where's the Modal
